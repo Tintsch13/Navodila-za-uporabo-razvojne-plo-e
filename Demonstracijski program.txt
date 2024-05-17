@@ -1,4 +1,4 @@
-<body>//-----Hardware-------------
+//-----Hardware-------------
 //User button
 #define BTN 9
 //RGB LED
@@ -15,11 +15,7 @@
 //UART
 #define RX 20
 #define TX 21
-
 #define BUFFER_SIZE 100  
-
-
-
 
 //-----Global variables-----
 const int led_R_channel = 0;
@@ -37,7 +33,6 @@ float vrednosti[BUFFER_SIZE];
 int trenutniIndex = 0;
 unsigned long casGumba = 0;
 unsigned long casZacetkaGumba = 0;
-
 
 void setup() {
   pinMode(BTN,INPUT);
@@ -86,10 +81,10 @@ void loop() {
     if(mode == 2){
       delay(100);
       float povp = trenutnaOsvetljenost(mode);
-      if (povp > 2500) {
-      rgb(0, 4096, 250);
+      if (povp > 2800) {
+      rgb(0, 4096, 300);
       }
-      else if(povp > 1500){
+      else if(povp > 2000){
         rgb(4096, 1000, 0);
       }
       else{
@@ -100,10 +95,10 @@ void loop() {
     else if(mode == 1){
       delay(100);
       float povp = trenutnaOsvetljenost(mode);
-      if (povp > 1500 && povp < 2500) {
+      if (povp > 1500 && povp < 3000) {
       rgb(0, 2000, 150);
       }
-      else if((povp > 750 && povp < 1500) || (povp > 2500 && povp < 3000)){
+      else if((povp > 750 && povp < 1500) || (povp > 3000 && povp < 3500)){
         rgb(2000, 1000, 0);
       }
       else{
@@ -201,3 +196,4 @@ float trenutnaOsvetljenost(int mode) {
 
   return povprecje;
 }
+
